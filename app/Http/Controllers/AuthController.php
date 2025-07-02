@@ -91,12 +91,13 @@ class AuthController extends Controller
             username: $validated["username"]
         );
 
+
         $isVerify = Hash::check(
             value: $validated["password"],
             hashedValue: $user["password"]
         );
 
-        $accessToken = $this->accessTokenService->createAccessToken(state: $user);
+        $accessToken = $this->accessTokenService->createAccessToken(user: $user);
         $cookie_login = $this->accessTokenService->setAccessToken(
             accessToken: $accessToken,
             role: $user["role"],
