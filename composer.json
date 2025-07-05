@@ -12,6 +12,7 @@
         "php": "^8.2",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10",
+        "mongodb/laravel-mongodb": "^5.4",
         "opcodesio/log-viewer": "^3.18",
         "predis/predis": "^3.0"
     },
