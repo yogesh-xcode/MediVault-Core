@@ -42,6 +42,12 @@ return [
             'synchronous' => null,
         ],
 
+        'mongodb' => [
+            'driver' => 'mongodb',
+            'dsn' => env('MONGODB_URI'),
+            'database' => env('MONGODB_DATABASE')
+        ],
+
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DB_URL'),
