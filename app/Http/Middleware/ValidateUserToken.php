@@ -13,7 +13,8 @@ readonly class ValidateUserToken
 {
     public function __construct(
         private AccessTokenService $accessTokenService,
-    ) {}
+    ) {
+    }
     public function handle(Request $request, Closure $next): Response
     {
 
@@ -23,17 +24,17 @@ readonly class ValidateUserToken
             return response()->json(data: [
                 'data' => 'None',
                 'status' => 'error',
-                'message' => 'Request is not validated. Access Token is missing! A'
+                'message' => 'Request is not validated. Access Token is missing!'
             ], status: 401);
         }
 
         $isValidToken = $this->accessTokenService->validateAccessToken(access_token_client: $access_token_client);
 
-        if (! $isValidToken) {
+        if (!$isValidToken) {
             return response()->json(data: [
                 'data' => 'None',
                 'status' => 'error',
-                'message' => 'Request is not validated. Access Token is missing! B'
+                'message' => 'Request is not validated. Access Token is missing!'
             ], status: 401);
         }
 
