@@ -4,10 +4,18 @@ namespace App\Http\Controllers;
 
 use App\DTOs\AuthDTO;
 use App\Http\Resources\UserResource;
+<<<<<<< HEAD
+=======
+
+>>>>>>> dev
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Hash;
+<<<<<<< HEAD
+=======
+
+>>>>>>> dev
 use App\Repositories\UserRepository;
 use App\Services\AccessTokenService;
 
@@ -72,7 +80,6 @@ class AuthController extends Controller
     {
         $validated = $request->validate(rules: $this->validationRules()["register"]);
         $validated["password"] = Hash::make(value: $validated["password"]);
-
         $user = $this->userRepo->create(user: $validated);
 
         return new AuthDTO(

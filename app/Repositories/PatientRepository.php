@@ -6,7 +6,6 @@ use App\Models\Patient;
 
 class PatientRepository
 {
-
     public function create($patient)
     {
         return Patient::create(attributes: $patient);
@@ -20,7 +19,7 @@ class PatientRepository
 
     public function delete($patient_id)
     {
-        return Patient::find($patient_id)->delete();
+        return Patient::find($patient_id)?->delete();
     }
 
     public function get($patient_id): Patient|null
@@ -35,6 +34,6 @@ class PatientRepository
 
     public function exists($patient_id): bool
     {
-        return $this->get(patient_id: $patient_id) ? true : false;
+        return $this->get(patient_id: $patient_id) !== null;
     }
 }

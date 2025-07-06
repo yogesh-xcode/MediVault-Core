@@ -23,7 +23,11 @@ return [
         [
             'match' => [
                 // Match only routes whose paths match this pattern (use * as a wildcard to match any characters). Example: 'users/*'.
+<<<<<<< HEAD
                 'prefixes' => ['api/*', 'auth/*', 'report/*', 'patient/*'],
+=======
+                'prefixes' => ['api/*', 'auth/*', 'report/*'],
+>>>>>>> dev
 
                 // Match only routes whose domains match this pattern (use * as a wildcard to match any characters). Example: 'api.*'.
                 'domains' => ['*'],

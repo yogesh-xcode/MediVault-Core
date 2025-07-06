@@ -66,7 +66,6 @@ class MedicalReportRepository
         ?string $report_type,
         ?array $timeline
     ): Collection {
-
         $med_report_ids = MedicalReportTrack::where(
             column: 'patient_id',
             operator: $patient_id
@@ -80,14 +79,12 @@ class MedicalReportRepository
 
         return $timeline
             ? $this->retrieveByTypeDate(
-                med_report_ids:
-                $med_report_ids,
+                med_report_ids: $med_report_ids,
                 report_type: $report_type,
                 timeline: $timeline
             )
             : $this->retrieveByType(
-                med_report_ids:
-                $med_report_ids,
+                med_report_ids: $med_report_ids,
                 report_type: $report_type
             );
     }

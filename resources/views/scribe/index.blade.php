@@ -83,6 +83,7 @@
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTreport-upload--patient_id-">
                                 <a href="#endpoints-POSTreport-upload--patient_id-">POST report/upload/{patient_id}</a>
                             </li>
+<<<<<<< HEAD
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETreport-retrive--patient_id---report_type--">
                                 <a href="#endpoints-GETreport-retrive--patient_id---report_type--">GET report/retrive/{patient_id}/{report_type?}</a>
                             </li>
@@ -94,6 +95,10 @@
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-DELETEpatient--patient_id-">
                                 <a href="#endpoints-DELETEpatient--patient_id-">DELETE patient/{patient_id}</a>
+=======
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETreport-retrive--patient_id---report_type-">
+                                <a href="#endpoints-GETreport-retrive--patient_id---report_type-">GET report/retrive/{patient_id}/{report_type}</a>
+>>>>>>> dev
                             </li>
                                                                         </ul>
                             </ul>
@@ -106,7 +111,11 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
+<<<<<<< HEAD
         <li>Last updated: July 6, 2025</li>
+=======
+        <li>Last updated: July 5, 2025</li>
+>>>>>>> dev
     </ul>
 </div>
 
@@ -179,7 +188,11 @@ content-type: application/json
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: &quot;None&quot;,
     &quot;status&quot;: &quot;error&quot;,
+<<<<<<< HEAD
     &quot;message&quot;: &quot;Request is not validated. Access Token is missing!&quot;
+=======
+    &quot;message&quot;: &quot;Request is not validated. Access Token is missing! A&quot;
+>>>>>>> dev
 }</code>
  </pre>
     </span>
@@ -590,14 +603,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
+<<<<<<< HEAD
                     <h2 id="endpoints-GETreport-retrive--patient_id---report_type--">GET report/retrive/{patient_id}/{report_type?}</h2>
+=======
+                    <h2 id="endpoints-GETreport-retrive--patient_id---report_type-">GET report/retrive/{patient_id}/{report_type}</h2>
+>>>>>>> dev
 
 <p>
 </p>
 
 
 
+<<<<<<< HEAD
 <span id="example-requests-GETreport-retrive--patient_id---report_type--">
+=======
+<span id="example-requests-GETreport-retrive--patient_id---report_type-">
+>>>>>>> dev
 <blockquote>Example request:</blockquote>
 
 
@@ -625,9 +646,15 @@ fetch(url, {
 
 </span>
 
+<<<<<<< HEAD
 <span id="example-responses-GETreport-retrive--patient_id---report_type--">
             <blockquote>
             <p>Example response (401):</p>
+=======
+<span id="example-responses-GETreport-retrive--patient_id---report_type-">
+            <blockquote>
+            <p>Example response (422):</p>
+>>>>>>> dev
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -638,6 +665,7 @@ content-type: application/json
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
+<<<<<<< HEAD
     &quot;data&quot;: &quot;None&quot;,
     &quot;status&quot;: &quot;error&quot;,
     &quot;message&quot;: &quot;Request is not validated. Access Token is missing!&quot;
@@ -654,22 +682,53 @@ content-type: application/json
 <span id="execution-error-GETreport-retrive--patient_id---report_type--" hidden>
     <blockquote>Request failed with error:</blockquote>
     <pre><code id="execution-error-message-GETreport-retrive--patient_id---report_type--">
+=======
+    &quot;message&quot;: &quot;The selected report type is invalid.&quot;,
+    &quot;errors&quot;: {
+        &quot;report_type&quot;: [
+            &quot;The selected report type is invalid.&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETreport-retrive--patient_id---report_type-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETreport-retrive--patient_id---report_type-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETreport-retrive--patient_id---report_type-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETreport-retrive--patient_id---report_type-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETreport-retrive--patient_id---report_type-">
+>>>>>>> dev
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
+<<<<<<< HEAD
 <form id="form-GETreport-retrive--patient_id---report_type--" data-method="GET"
       data-path="report/retrive/{patient_id}/{report_type?}"
+=======
+<form id="form-GETreport-retrive--patient_id---report_type-" data-method="GET"
+      data-path="report/retrive/{patient_id}/{report_type}"
+>>>>>>> dev
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
+<<<<<<< HEAD
       onsubmit="event.preventDefault(); executeTryOut('GETreport-retrive--patient_id---report_type--', this);">
+=======
+      onsubmit="event.preventDefault(); executeTryOut('GETreport-retrive--patient_id---report_type-', this);">
+>>>>>>> dev
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+<<<<<<< HEAD
                     id="btn-tryout-GETreport-retrive--patient_id---report_type--"
                     onclick="tryItOut('GETreport-retrive--patient_id---report_type--');">Try it out ⚡
             </button>
@@ -681,6 +740,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-executetryout-GETreport-retrive--patient_id---report_type--"
+=======
+                    id="btn-tryout-GETreport-retrive--patient_id---report_type-"
+                    onclick="tryItOut('GETreport-retrive--patient_id---report_type-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETreport-retrive--patient_id---report_type-"
+                    onclick="cancelTryOut('GETreport-retrive--patient_id---report_type-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETreport-retrive--patient_id---report_type-"
+>>>>>>> dev
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -688,7 +760,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
+<<<<<<< HEAD
             <b><code>report/retrive/{patient_id}/{report_type?}</code></b>
+=======
+            <b><code>report/retrive/{patient_id}/{report_type}</code></b>
+>>>>>>> dev
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -696,7 +772,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
+<<<<<<< HEAD
                               name="Content-Type"                data-endpoint="GETreport-retrive--patient_id---report_type--"
+=======
+                              name="Content-Type"                data-endpoint="GETreport-retrive--patient_id---report_type-"
+>>>>>>> dev
                value="application/json"
                data-component="header">
     <br>
@@ -707,7 +787,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
+<<<<<<< HEAD
                               name="Accept"                data-endpoint="GETreport-retrive--patient_id---report_type--"
+=======
+                              name="Accept"                data-endpoint="GETreport-retrive--patient_id---report_type-"
+>>>>>>> dev
                value="application/json"
                data-component="header">
     <br>
@@ -719,7 +803,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
+<<<<<<< HEAD
                               name="patient_id"                data-endpoint="GETreport-retrive--patient_id---report_type--"
+=======
+                              name="patient_id"                data-endpoint="GETreport-retrive--patient_id---report_type-"
+>>>>>>> dev
                value="architecto"
                data-component="url">
     <br>
@@ -728,9 +816,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>report_type</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+<<<<<<< HEAD
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="report_type"                data-endpoint="GETreport-retrive--patient_id---report_type--"
+=======
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="report_type"                data-endpoint="GETreport-retrive--patient_id---report_type-"
+>>>>>>> dev
                value="architecto"
                data-component="url">
     <br>
@@ -738,6 +832,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
+<<<<<<< HEAD
                     <h2 id="endpoints-GETpatient--patient_id-">GET patient/{patient_id}</h2>
 
 <p>
@@ -1115,6 +1210,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
+=======
+>>>>>>> dev
             
 
         
