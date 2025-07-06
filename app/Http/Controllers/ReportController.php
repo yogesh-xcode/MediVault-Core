@@ -9,15 +9,20 @@ use Illuminate\Validation\Rule;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\MedicalReportRepository;
+use App\Repositories\PatientRepository;
 use App\Repositories\StorageRepository;
+use App\Services\ReportService;
+use Illuminate\Support\Str;
 
 class ReportController extends Controller
 {
 
     public function __construct(
         private StorageRepository $storageRepo,
+        private ReportService $reportService,
         private MedicalReportRepository $medicalReportRepository,
-        private ModelService $modelService
+        private ModelService $modelService,
+        private PatientRepository $patientRepo
     ) {
     }
 
@@ -36,7 +41,7 @@ class ReportController extends Controller
             "upload" => [
                 'medical-report' => 'required|mimes:jpg,jpeg,png,pdf|max:10240'
             ],
-            "retrive" =>
+            "retrieve" =>
                 [
                     'pathParams' =>
                         [
@@ -45,9 +50,11 @@ class ReportController extends Controller
                                 'string',
                             ],
                             'report_type' => [
+                                'nullable',
                                 'string',
-                                Rule::in(values: $report_types)
+                                Rule::in($report_types)
                             ]
+
                         ],
                     'queryParams' => [
                         'from_date' => 'date',
@@ -75,24 +82,33 @@ class ReportController extends Controller
         $report = $request->file('medical-report');
 
         try {
-            $url = $this->storageRepo->store_report(report: $report, patient_id: $patient_id);
+            $url = $this->storageRepo->storeReport(report: $report, patient_id: $patient_id);
 
             $ocr_data = $this->modelService->performImageOCR(report: $report);
             $structuredReport = $this->modelService->ocrToJson(ocr: $ocr_data);
 
-            $report = [
-                'report_id' => uniqid(prefix: 'PRID'),
+            $reportData = [
+                'report_id' => $this->reportService->generateReportID(),
                 'report' => $structuredReport,
                 'url' => $url
             ];
 
+            if (!$this->patientRepo->exists($patient_id)) {
+                return new ReportDTO(
+                    data: [],
+                    status: "error",
+                    message: "Patient does not exist. Please create a new record.",
+                    code: 404
+                );
+            }
+
             $this->medicalReportRepository->add(
-                report: $report,
+                report: $reportData,
                 patient_id: $patient_id
             );
 
             return new ReportDTO(
-                data: $report,
+                data: $reportData,
                 status: "success",
                 message: "Report was uploaded and stored successfully.",
                 code: 201
@@ -107,18 +123,27 @@ class ReportController extends Controller
         }
     }
 
-    public function retriveReport(Request $request, $patient_id, $report_type): ReportDTO
+    public function retrieveReport(Request $request, string $patient_id, ?string $report_type = null): ReportDTO
     {
-        $retrive_payload = [
+        $retrievePayload = $report_type ? [
             'patient_id' => $patient_id,
-            'report_type' => $report_type ?? null
-        ];
+            'report_type' => $report_type
+        ] : compact('patient_id');
 
         $pathValidated = validator(
-            data: $retrive_payload,
-            rules: $this->validationRules()["retrive"]["pathParams"]
+            data: $retrievePayload,
+            rules: $this->validationRules()["retrieve"]["pathParams"]
         )->validate();
-        $queryValidated = $request->validate(rules: $this->validationRules()["retrive"]["queryParams"]);
+        $queryValidated = $request->validate(rules: $this->validationRules()["retrieve"]["queryParams"]);
+
+        if (!$this->patientRepo->exists(patient_id: $patient_id)) {
+            return new ReportDTO(
+                data: [],
+                status: "error",
+                message: "Patient does not exist. Please create a new record.",
+                code: 404
+            );
+        }
 
         $reports = $this->medicalReportRepository->retrieve(
             patient_id: $pathValidated["patient_id"],
@@ -126,12 +151,23 @@ class ReportController extends Controller
             timeline: $queryValidated ?? null
         );
 
+        if ($reports->isEmpty()) {
+            return new ReportDTO(
+                data: [],
+                status: "error",
+                message: "No reports found for this patient.",
+                code: 404
+            );
+        }
+
+        $returnReportKey = $report_type ?? 'reports';
+
         return new ReportDTO(
             data: [
-                $report_type => $reports
+                $returnReportKey => $reports
             ],
             status: "success",
-            message: "medical reports of $patient_id is here",
+            message: "Fetched medical reports for patient ID: $patient_id",
             code: 200
         );
     }

@@ -10,12 +10,14 @@ use App\Http\Resources\PatientResource;
 
 class PatientController extends Controller
 {
-    public function __construct(private readonly PatientRepository $patientRepo) {}
+    public function __construct(private readonly PatientRepository $patientRepo)
+    {
+    }
 
     public function validationRules(): array
     {
         return [
-            "patient" => [
+            "create" => [
                 'patient_id' => [
                     'required',
                     'string',
@@ -31,6 +33,11 @@ class PatientController extends Controller
                     'required',
                     'date'
                 ],
+            ],
+            "update" => [
+                'patient_id' => 'required|string',
+                'field' => 'required|string',
+                'new_value' => 'required|string'
             ]
         ];
     }
@@ -38,7 +45,7 @@ class PatientController extends Controller
     // ✅ Create Patient
     public function create(Request $request)
     {
-        $validated = $request->validate($this->validationRules()["patient"]);
+        $validated = $request->validate($this->validationRules()["create"]);
         $patient = $this->patientRepo->create($validated);
 
         return new PatientDTO(
@@ -52,16 +59,12 @@ class PatientController extends Controller
     // ✅ Update Patient
     public function update(Request $request)
     {
-        $validated = $request->validate([
-            'patient_id' => 'required|string',
-            'column'     => 'required|string',
-            'value'      => 'required|string'
-        ]);
+        $validated = $request->validate($this->validationRules()["update"]);
 
         $updated = $this->patientRepo->update(
             $validated["patient_id"],
-            $validated["column"],
-            $validated["value"]
+            $validated["field"],
+            $validated["new_value"]
         );
 
         if (!$updated) {
@@ -84,7 +87,7 @@ class PatientController extends Controller
     }
 
     // ✅ Delete Patient
-    public function delete($patient_id)
+    public function remove($patient_id)
     {
         $patient = $this->patientRepo->get($patient_id);
 
@@ -108,7 +111,7 @@ class PatientController extends Controller
     }
 
     // ✅ Get a Single Patient
-    public function get($patient_id)
+    public function retrieve($patient_id)
     {
         $patient = $this->patientRepo->get($patient_id);
 
@@ -130,9 +133,9 @@ class PatientController extends Controller
     }
 
     // ✅ Get All Patients
-    public function getAll()
+    public function all()
     {
-        $patients = Patient::all();
+        $patients = $this->patientRepo->all();
 
         return new PatientDTO(
             data: PatientResource::collection($patients)->resolve(),
