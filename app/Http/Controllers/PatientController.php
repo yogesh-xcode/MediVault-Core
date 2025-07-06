@@ -10,12 +10,22 @@ use App\Http\Resources\PatientResource;
 
 class PatientController extends Controller
 {
+<<<<<<< HEAD
+    public function __construct(private readonly PatientRepository $patientRepo)
+    {
+    }
+=======
     public function __construct(private readonly PatientRepository $patientRepo) {}
+>>>>>>> dev
 
     public function validationRules(): array
     {
         return [
+<<<<<<< HEAD
+            "create" => [
+=======
             "patient" => [
+>>>>>>> dev
                 'patient_id' => [
                     'required',
                     'string',
@@ -31,6 +41,14 @@ class PatientController extends Controller
                     'required',
                     'date'
                 ],
+<<<<<<< HEAD
+            ],
+            "update" => [
+                'patient_id' => 'required|string',
+                'field' => 'required|string',
+                'new_value' => 'required|string'
+=======
+>>>>>>> dev
             ]
         ];
     }
@@ -38,7 +56,11 @@ class PatientController extends Controller
     // ✅ Create Patient
     public function create(Request $request)
     {
+<<<<<<< HEAD
+        $validated = $request->validate($this->validationRules()["create"]);
+=======
         $validated = $request->validate($this->validationRules()["patient"]);
+>>>>>>> dev
         $patient = $this->patientRepo->create($validated);
 
         return new PatientDTO(
@@ -52,6 +74,14 @@ class PatientController extends Controller
     // ✅ Update Patient
     public function update(Request $request)
     {
+<<<<<<< HEAD
+        $validated = $request->validate($this->validationRules()["update"]);
+
+        $updated = $this->patientRepo->update(
+            $validated["patient_id"],
+            $validated["field"],
+            $validated["new_value"]
+=======
         $validated = $request->validate([
             'patient_id' => 'required|string',
             'column'     => 'required|string',
@@ -62,6 +92,7 @@ class PatientController extends Controller
             $validated["patient_id"],
             $validated["column"],
             $validated["value"]
+>>>>>>> dev
         );
 
         if (!$updated) {
@@ -84,7 +115,11 @@ class PatientController extends Controller
     }
 
     // ✅ Delete Patient
+<<<<<<< HEAD
+    public function remove($patient_id)
+=======
     public function delete($patient_id)
+>>>>>>> dev
     {
         $patient = $this->patientRepo->get($patient_id);
 
@@ -108,7 +143,11 @@ class PatientController extends Controller
     }
 
     // ✅ Get a Single Patient
+<<<<<<< HEAD
+    public function retrieve($patient_id)
+=======
     public function get($patient_id)
+>>>>>>> dev
     {
         $patient = $this->patientRepo->get($patient_id);
 
@@ -130,9 +169,15 @@ class PatientController extends Controller
     }
 
     // ✅ Get All Patients
+<<<<<<< HEAD
+    public function all()
+    {
+        $patients = $this->patientRepo->all();
+=======
     public function getAll()
     {
         $patients = Patient::all();
+>>>>>>> dev
 
         return new PatientDTO(
             data: PatientResource::collection($patients)->resolve(),
@@ -141,4 +186,8 @@ class PatientController extends Controller
             code: 200
         );
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> dev

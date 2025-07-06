@@ -6,18 +6,20 @@ use App\DTOs\ReportDTO;
 use App\Services\ModelService;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-
 use App\Http\Controllers\Controller;
 use App\Repositories\MedicalReportRepository;
+use App\Repositories\PatientRepository;
 use App\Repositories\StorageRepository;
+use App\Services\ReportService;
 
 class ReportController extends Controller
 {
-
     public function __construct(
         private StorageRepository $storageRepo,
+        private ReportService $reportService,
         private MedicalReportRepository $medicalReportRepository,
-        private ModelService $modelService
+        private ModelService $modelService,
+        private PatientRepository $patientRepo
     ) {
     }
 
@@ -32,107 +34,88 @@ class ReportController extends Controller
             'mri_scan_summary',
             'discharge_summary'
         ];
+
         return [
             "upload" => [
                 'medical-report' => 'required|mimes:jpg,jpeg,png,pdf|max:10240'
             ],
-            "retrive" =>
-                [
-                    'pathParams' =>
-                        [
-                            'patient_id' => [
-                                'required',
-                                'string',
-                            ],
-                            'report_type' => [
-                                'string',
-                                Rule::in(values: $report_types)
-                            ]
-                        ],
-                    'queryParams' => [
-                        'from_date' => 'date',
-                        'to_date' => 'date',
-                    ]
-
+            "retrieve" => [
+                'pathParams' => [
+                    'patient_id' => ['required', 'string'],
+                    'report_type' => ['nullable', 'string', Rule::in($report_types)],
                 ],
-
+                'queryParams' => [
+                    'from_date' => 'date',
+                    'to_date' => 'date',
+                ]
+            ],
         ];
     }
 
-    public function uploadReport(Request $request, $patient_id): ReportDTO
+    public function uploadReport(Request $request, string $patient_id): ReportDTO
     {
-        if (!$request->hasFile(key: 'medical-report')) {
-            return new ReportDTO(
-                data: [],
-                status: "error",
-                message: "No report file uploaded.",
-                code: 422
-            );
+        if (!$request->hasFile('medical-report')) {
+            return new ReportDTO([], "error", "No report file uploaded.", 422);
         }
 
         $request->validate($this->validationRules()["upload"]);
 
-        $report = $request->file('medical-report');
-
         try {
-            $url = $this->storageRepo->store_report(report: $report, patient_id: $patient_id);
+            $reportFile = $request->file('medical-report');
+            $url = $this->storageRepo->storeReport($reportFile, $patient_id);
 
-            $ocr_data = $this->modelService->performImageOCR(report: $report);
-            $structuredReport = $this->modelService->ocrToJson(ocr: $ocr_data);
+            $ocr_data = $this->modelService->performImageOCR($reportFile);
+            $structuredReport = $this->modelService->ocrToJson($ocr_data);
 
-            $report = [
-                'report_id' => uniqid(prefix: 'PRID'),
+            $reportData = [
+                'report_id' => $this->reportService->generateReportID(),
                 'report' => $structuredReport,
                 'url' => $url
             ];
 
-            $this->medicalReportRepository->add(
-                report: $report,
-                patient_id: $patient_id
-            );
+            if (!$this->patientRepo->exists($patient_id)) {
+                return new ReportDTO([], "error", "Patient does not exist. Please create a new record.", 404);
+            }
 
-            return new ReportDTO(
-                data: $report,
-                status: "success",
-                message: "Report was uploaded and stored successfully.",
-                code: 201
-            );
+            $this->medicalReportRepository->add($reportData, $patient_id);
+
+            return new ReportDTO($reportData, "success", "Report was uploaded and stored successfully.", 201);
         } catch (\Throwable $e) {
-            return new ReportDTO(
-                data: [],
-                status: "error",
-                message: "Something went wrong during upload or processing. " . $e->getMessage(),
-                code: 500
-            );
+            return new ReportDTO([], "error", "Something went wrong during upload or processing. " . $e->getMessage(), 500);
         }
     }
 
-    public function retriveReport(Request $request, $patient_id, $report_type): ReportDTO
+    public function retrieveReport(Request $request, string $patient_id, ?string $report_type = null): ReportDTO
     {
-        $retrive_payload = [
+        $retrievePayload = [
             'patient_id' => $patient_id,
-            'report_type' => $report_type ?? null
+            'report_type' => $report_type
         ];
 
-        $pathValidated = validator(
-            data: $retrive_payload,
-            rules: $this->validationRules()["retrive"]["pathParams"]
-        )->validate();
-        $queryValidated = $request->validate(rules: $this->validationRules()["retrive"]["queryParams"]);
+        $validatedPath = validator($retrievePayload, $this->validationRules()["retrieve"]["pathParams"])->validate();
+        $validatedQuery = $request->validate($this->validationRules()["retrieve"]["queryParams"]);
+
+        if (!$this->patientRepo->exists($patient_id)) {
+            return new ReportDTO([], "error", "Patient does not exist. Please create a new record.", 404);
+        }
 
         $reports = $this->medicalReportRepository->retrieve(
-            patient_id: $pathValidated["patient_id"],
-            report_type: $pathValidated["report_type"] ?? null,
-            timeline: $queryValidated ?? null
+            $validatedPath["patient_id"],
+            $validatedPath["report_type"] ?? null,
+            $validatedQuery ?? null
         );
 
+        if ($reports->isEmpty()) {
+            return new ReportDTO([], "error", "No reports found for this patient.", 404);
+        }
+
+        $returnReportKey = $report_type ?? 'reports';
+
         return new ReportDTO(
-            data: [
-                $report_type => $reports
-            ],
-            status: "success",
-            message: "medical reports of $patient_id is here",
-            code: 200
+            [$returnReportKey => $reports],
+            "success",
+            "Fetched medical reports for patient ID: $patient_id",
+            200
         );
     }
 }

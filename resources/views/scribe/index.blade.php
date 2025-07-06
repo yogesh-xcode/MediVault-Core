@@ -83,8 +83,22 @@
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTreport-upload--patient_id-">
                                 <a href="#endpoints-POSTreport-upload--patient_id-">POST report/upload/{patient_id}</a>
                             </li>
+<<<<<<< HEAD
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETreport-retrive--patient_id---report_type--">
+                                <a href="#endpoints-GETreport-retrive--patient_id---report_type--">GET report/retrive/{patient_id}/{report_type?}</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETpatient--patient_id-">
+                                <a href="#endpoints-GETpatient--patient_id-">GET patient/{patient_id}</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-PATCHpatient--patient_id-">
+                                <a href="#endpoints-PATCHpatient--patient_id-">PATCH patient/{patient_id}</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-DELETEpatient--patient_id-">
+                                <a href="#endpoints-DELETEpatient--patient_id-">DELETE patient/{patient_id}</a>
+=======
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETreport-retrive--patient_id---report_type-">
                                 <a href="#endpoints-GETreport-retrive--patient_id---report_type-">GET report/retrive/{patient_id}/{report_type}</a>
+>>>>>>> dev
                             </li>
                                                                         </ul>
                             </ul>
@@ -97,7 +111,11 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
+<<<<<<< HEAD
+        <li>Last updated: July 6, 2025</li>
+=======
         <li>Last updated: July 5, 2025</li>
+>>>>>>> dev
     </ul>
 </div>
 
@@ -170,7 +188,11 @@ content-type: application/json
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: &quot;None&quot;,
     &quot;status&quot;: &quot;error&quot;,
+<<<<<<< HEAD
+    &quot;message&quot;: &quot;Request is not validated. Access Token is missing!&quot;
+=======
     &quot;message&quot;: &quot;Request is not validated. Access Token is missing! A&quot;
+>>>>>>> dev
 }</code>
  </pre>
     </span>
@@ -581,14 +603,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
+<<<<<<< HEAD
+                    <h2 id="endpoints-GETreport-retrive--patient_id---report_type--">GET report/retrive/{patient_id}/{report_type?}</h2>
+=======
                     <h2 id="endpoints-GETreport-retrive--patient_id---report_type-">GET report/retrive/{patient_id}/{report_type}</h2>
+>>>>>>> dev
 
 <p>
 </p>
 
 
 
+<<<<<<< HEAD
+<span id="example-requests-GETreport-retrive--patient_id---report_type--">
+=======
 <span id="example-requests-GETreport-retrive--patient_id---report_type-">
+>>>>>>> dev
 <blockquote>Example request:</blockquote>
 
 
@@ -616,9 +646,15 @@ fetch(url, {
 
 </span>
 
+<<<<<<< HEAD
+<span id="example-responses-GETreport-retrive--patient_id---report_type--">
+            <blockquote>
+            <p>Example response (401):</p>
+=======
 <span id="example-responses-GETreport-retrive--patient_id---report_type-">
             <blockquote>
             <p>Example response (422):</p>
+>>>>>>> dev
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -629,6 +665,24 @@ content-type: application/json
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
+<<<<<<< HEAD
+    &quot;data&quot;: &quot;None&quot;,
+    &quot;status&quot;: &quot;error&quot;,
+    &quot;message&quot;: &quot;Request is not validated. Access Token is missing!&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETreport-retrive--patient_id---report_type--" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETreport-retrive--patient_id---report_type--"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETreport-retrive--patient_id---report_type--"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETreport-retrive--patient_id---report_type--" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETreport-retrive--patient_id---report_type--">
+=======
     &quot;message&quot;: &quot;The selected report type is invalid.&quot;,
     &quot;errors&quot;: {
         &quot;report_type&quot;: [
@@ -648,22 +702,45 @@ content-type: application/json
 <span id="execution-error-GETreport-retrive--patient_id---report_type-" hidden>
     <blockquote>Request failed with error:</blockquote>
     <pre><code id="execution-error-message-GETreport-retrive--patient_id---report_type-">
+>>>>>>> dev
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
+<<<<<<< HEAD
+<form id="form-GETreport-retrive--patient_id---report_type--" data-method="GET"
+      data-path="report/retrive/{patient_id}/{report_type?}"
+=======
 <form id="form-GETreport-retrive--patient_id---report_type-" data-method="GET"
       data-path="report/retrive/{patient_id}/{report_type}"
+>>>>>>> dev
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
+<<<<<<< HEAD
+      onsubmit="event.preventDefault(); executeTryOut('GETreport-retrive--patient_id---report_type--', this);">
+=======
       onsubmit="event.preventDefault(); executeTryOut('GETreport-retrive--patient_id---report_type-', this);">
+>>>>>>> dev
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+<<<<<<< HEAD
+                    id="btn-tryout-GETreport-retrive--patient_id---report_type--"
+                    onclick="tryItOut('GETreport-retrive--patient_id---report_type--');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETreport-retrive--patient_id---report_type--"
+                    onclick="cancelTryOut('GETreport-retrive--patient_id---report_type--');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETreport-retrive--patient_id---report_type--"
+=======
                     id="btn-tryout-GETreport-retrive--patient_id---report_type-"
                     onclick="tryItOut('GETreport-retrive--patient_id---report_type-');">Try it out ⚡
             </button>
@@ -675,6 +752,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
                     id="btn-executetryout-GETreport-retrive--patient_id---report_type-"
+>>>>>>> dev
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -682,7 +760,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
+<<<<<<< HEAD
+            <b><code>report/retrive/{patient_id}/{report_type?}</code></b>
+=======
             <b><code>report/retrive/{patient_id}/{report_type}</code></b>
+>>>>>>> dev
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -690,7 +772,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
+<<<<<<< HEAD
+                              name="Content-Type"                data-endpoint="GETreport-retrive--patient_id---report_type--"
+=======
                               name="Content-Type"                data-endpoint="GETreport-retrive--patient_id---report_type-"
+>>>>>>> dev
                value="application/json"
                data-component="header">
     <br>
@@ -701,7 +787,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
+<<<<<<< HEAD
+                              name="Accept"                data-endpoint="GETreport-retrive--patient_id---report_type--"
+=======
                               name="Accept"                data-endpoint="GETreport-retrive--patient_id---report_type-"
+>>>>>>> dev
                value="application/json"
                data-component="header">
     <br>
@@ -713,7 +803,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
+<<<<<<< HEAD
+                              name="patient_id"                data-endpoint="GETreport-retrive--patient_id---report_type--"
+=======
                               name="patient_id"                data-endpoint="GETreport-retrive--patient_id---report_type-"
+>>>>>>> dev
                value="architecto"
                data-component="url">
     <br>
@@ -722,9 +816,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>report_type</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
+<<<<<<< HEAD
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="report_type"                data-endpoint="GETreport-retrive--patient_id---report_type--"
+=======
  &nbsp;
                 <input type="text" style="display: none"
                               name="report_type"                data-endpoint="GETreport-retrive--patient_id---report_type-"
+>>>>>>> dev
                value="architecto"
                data-component="url">
     <br>
@@ -732,6 +832,386 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
+<<<<<<< HEAD
+                    <h2 id="endpoints-GETpatient--patient_id-">GET patient/{patient_id}</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETpatient--patient_id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/patient/architecto" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/patient/architecto"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETpatient--patient_id-">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: &quot;None&quot;,
+    &quot;status&quot;: &quot;error&quot;,
+    &quot;message&quot;: &quot;Request is not validated. Access Token is missing!&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETpatient--patient_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETpatient--patient_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETpatient--patient_id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETpatient--patient_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETpatient--patient_id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETpatient--patient_id-" data-method="GET"
+      data-path="patient/{patient_id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETpatient--patient_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETpatient--patient_id-"
+                    onclick="tryItOut('GETpatient--patient_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETpatient--patient_id-"
+                    onclick="cancelTryOut('GETpatient--patient_id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETpatient--patient_id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>patient/{patient_id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETpatient--patient_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETpatient--patient_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>patient_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="patient_id"                data-endpoint="GETpatient--patient_id-"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the patient. Example: <code>architecto</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-PATCHpatient--patient_id-">PATCH patient/{patient_id}</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-PATCHpatient--patient_id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PATCH \
+    "http://localhost:8000/patient/architecto" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/patient/architecto"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "PATCH",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-PATCHpatient--patient_id-">
+</span>
+<span id="execution-results-PATCHpatient--patient_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PATCHpatient--patient_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PATCHpatient--patient_id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PATCHpatient--patient_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PATCHpatient--patient_id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PATCHpatient--patient_id-" data-method="PATCH"
+      data-path="patient/{patient_id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PATCHpatient--patient_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PATCHpatient--patient_id-"
+                    onclick="tryItOut('PATCHpatient--patient_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PATCHpatient--patient_id-"
+                    onclick="cancelTryOut('PATCHpatient--patient_id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PATCHpatient--patient_id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>patient/{patient_id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PATCHpatient--patient_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PATCHpatient--patient_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>patient_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="patient_id"                data-endpoint="PATCHpatient--patient_id-"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the patient. Example: <code>architecto</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-DELETEpatient--patient_id-">DELETE patient/{patient_id}</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-DELETEpatient--patient_id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost:8000/patient/architecto" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/patient/architecto"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEpatient--patient_id-">
+</span>
+<span id="execution-results-DELETEpatient--patient_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEpatient--patient_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEpatient--patient_id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEpatient--patient_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEpatient--patient_id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEpatient--patient_id-" data-method="DELETE"
+      data-path="patient/{patient_id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEpatient--patient_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEpatient--patient_id-"
+                    onclick="tryItOut('DELETEpatient--patient_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEpatient--patient_id-"
+                    onclick="cancelTryOut('DELETEpatient--patient_id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEpatient--patient_id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>patient/{patient_id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEpatient--patient_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEpatient--patient_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>patient_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="patient_id"                data-endpoint="DELETEpatient--patient_id-"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the patient. Example: <code>architecto</code></p>
+            </div>
+                    </form>
+
+=======
+>>>>>>> dev
             
 
         

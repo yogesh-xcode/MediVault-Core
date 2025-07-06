@@ -41,8 +41,11 @@ class MedicalReportRepository
             )->filter();
     }
 
-    private function retrieveByTypeDate(array $med_report_ids, string $report_type, array $timeline): Collection
-    {
+    private function retrieveByTypeDate(
+        array $med_report_ids,
+        string $report_type,
+        array $timeline
+    ): Collection {
         return MedicalReport::whereIn(
             column: 'report_id',
             values: $med_report_ids
@@ -58,14 +61,11 @@ class MedicalReportRepository
             )->filter();
     }
 
-
-
     public function retrieve(
         string $patient_id,
-        string $report_type,
+        ?string $report_type,
         ?array $timeline
     ): Collection {
-
         $med_report_ids = MedicalReportTrack::where(
             column: 'patient_id',
             operator: $patient_id
@@ -79,14 +79,12 @@ class MedicalReportRepository
 
         return $timeline
             ? $this->retrieveByTypeDate(
-                med_report_ids:
-                $med_report_ids,
+                med_report_ids: $med_report_ids,
                 report_type: $report_type,
                 timeline: $timeline
             )
             : $this->retrieveByType(
-                med_report_ids:
-                $med_report_ids,
+                med_report_ids: $med_report_ids,
                 report_type: $report_type
             );
     }

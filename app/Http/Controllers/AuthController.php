@@ -4,12 +4,18 @@ namespace App\Http\Controllers;
 
 use App\DTOs\AuthDTO;
 use App\Http\Resources\UserResource;
+<<<<<<< HEAD
+=======
 
+>>>>>>> dev
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Hash;
+<<<<<<< HEAD
+=======
 
+>>>>>>> dev
 use App\Repositories\UserRepository;
 use App\Services\AccessTokenService;
 
@@ -17,8 +23,10 @@ class AuthController extends Controller
 {
     public function __construct(
         private readonly UserRepository $userRepo,
-        private readonly AccessTokenService $accessTokenService,
-    ) {}
+        private readonly AccessTokenService $accessTokenService
+    ) {
+    }
+
     public function validationRules(): array
     {
         $roles = ['admin', 'manager', 'doctor'];
@@ -76,42 +84,42 @@ class AuthController extends Controller
 
         return new AuthDTO(
             data: new UserResource(resource: $user),
-            status: $user ?  "success" : "error",
-            message: $user ? "user registered successfully" : "user already exists!",
-            code: $user ? 201 : 409
+            status: "success",
+            message: "User registered successfully.",
+            code: 201
         );
     }
 
     public function login(Request $request): AuthDTO
     {
-
         $validated = $request->validate(rules: $this->validationRules()["login"]);
 
         $user = $this->userRepo->getUserByUsername(
             username: $validated["username"]
         );
 
-
-        $isVerify = Hash::check(
-            value: $validated["password"],
-            hashedValue: $user["password"]
-        );
+        if (!$user || !Hash::check($validated["password"], $user->password)) {
+            return new AuthDTO(
+                data: new UserResource($user), // still return the structure
+                status: "error",
+                message: "Invalid credentials.",
+                code: 401
+            );
+        }
 
         $accessToken = $this->accessTokenService->createAccessToken(user: $user);
-        $cookie_login = $this->accessTokenService->setAccessToken(
+        $cookie = $this->accessTokenService->setAccessToken(
             accessToken: $accessToken,
-            role: $user["role"],
-            username: $user["username"]
+            role: $user->role,
+            username: $user->username
         );
 
         return new AuthDTO(
             data: new UserResource(resource: $user),
-            status: $isVerify ? "success" : "error",
-            message: $isVerify ?
-                "user successfully logged in"
-                : "user is unauthorized!",
-            code: $isVerify ? 200 : 401,
-            cookie: $cookie_login
+            status: "success",
+            message: "User successfully logged in.",
+            code: 200,
+            cookie: $cookie
         );
     }
 }
